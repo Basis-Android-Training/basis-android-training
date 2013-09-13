@@ -101,7 +101,9 @@
         android:layout_below="@id/lblAge"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="CGPA" />
+        android:text="CGPA"
+        
+         />
 
     <RatingBar
         android:id="@+id/rtbResult"
@@ -109,7 +111,18 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@id/lblResult"
 		android:layout_below="@id/skbAge"
-/>
-    
+		android:numStars="4"
+		android:stepSize=".25"
+		android:rating="3.25"
+	/>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/skbAge"
+        android:layout_below="@+id/rtbResult"
+        android:layout_marginTop="72dp"
+        android:text="Save" />
 
 </RelativeLayout>
