@@ -1,0 +1,62 @@
+
+package com.basis.listviewsample;
+
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class SimpleListActivity extends ListActivity {
+    ListView lstSimpleList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_simplelist);
+        intilizeControls();
+        loadData();
+        registerEvent();
+    }
+
+    private void intilizeControls() {
+        lstSimpleList = getListView();
+    }
+
+    private void loadData() {
+        ArrayAdapter<String> datatHolder = new ArrayAdapter<String>(this,
+                android.R.layout.simple_expandable_list_item_1, prepareData());
+
+        lstSimpleList.setAdapter(datatHolder);
+    }
+
+    private void registerEvent() {
+
+        lstSimpleList.setOnItemClickListener(new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> list, View view, int position, long id) {
+                TextView clickedView = (TextView) view;
+                Toast.makeText(
+                        SimpleListActivity.this,
+                        "Item with id [" + id + "] - Position [" + position + "] - Planet ["
+                                + clickedView.getText() + "]", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    private String[] prepareData() {
+
+        return new String[] {
+                "Apple", "Avocado", "Banana",
+                "Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
+                "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple"
+        };
+    }
+
+}
